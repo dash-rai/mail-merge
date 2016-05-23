@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :templates
   devise_for :users
+  as :user do
+    root 'devise/sessions#new'
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
