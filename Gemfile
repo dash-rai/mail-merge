@@ -45,3 +45,7 @@ group :development, :test do
   gem 'spring'
 end
 
+group :production do
+  # For static asset serving and logging on Heroku
+  gem 'rails_12factor', '~> 0.0.3'
+end
