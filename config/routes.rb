@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  resources :mail_templates
   root 'home#index'
 
-  resources :templates
   devise_for :users
 
   # The priority is based upon order of creation: first created -> highest priority.

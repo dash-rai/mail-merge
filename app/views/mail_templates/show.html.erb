@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>From:</strong>
+  <%= @mail_template.from %>
+</p>
+
+<p>
+  <strong>To:</strong>
+  <%= @mail_template.to %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @mail_template.subject %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @mail_template.user %>
+</p>
+
+<%= link_to 'Edit', edit_mail_template_path(@mail_template) %> |
+<%= link_to 'Back', mail_templates_path %>

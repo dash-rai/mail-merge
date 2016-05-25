@@ -1,10 +1,10 @@
-<%= form_for(@template) do |f| %>
-  <% if @template.errors.any? %>
+<%= form_for(@mail_template) do |f| %>
+  <% if @mail_template.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@template.errors.count, "error") %> prohibited this template from being saved:</h2>
+      <h2><%= pluralize(@mail_template.errors.count, "error") %> prohibited this mail_template from being saved:</h2>
 
       <ul>
-      <% @template.errors.full_messages.each do |message| %>
+      <% @mail_template.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -22,10 +22,6 @@
   <div class="field">
     <%= f.label :subject %><br>
     <%= f.text_field :subject %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_field :body %>
   </div>
   <div class="field">
     <%= f.label :user_id %><br>
