@@ -26,6 +26,7 @@ class MailTemplatesController < ApplicationController
   # POST /mail_templates.json
   def create
     @mail_template = MailTemplate.new(mail_template_params)
+    @mail_template.user = current_user
 
     respond_to do |format|
       if @mail_template.save
