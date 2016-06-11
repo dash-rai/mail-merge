@@ -6,9 +6,8 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:from) %></th>
-      <th><%= model_class.human_attribute_name(:to) %></th>
       <th><%= model_class.human_attribute_name(:subject) %></th>
+      <th><%= model_class.human_attribute_name(:body) %></th>
       <th><%= model_class.human_attribute_name(:user_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -18,9 +17,8 @@
     <% @mail_templates.each do |mail_template| %>
       <tr>
         <td><%= link_to mail_template.id, mail_template_path(mail_template) %></td>
-        <td><%= mail_template.from %></td>
-        <td><%= mail_template.to %></td>
         <td><%= mail_template.subject %></td>
+        <td><%= mail_template.body %></td>
         <td><%= mail_template.user_id %></td>
         <td><%=l mail_template.created_at %></td>
         <td>
