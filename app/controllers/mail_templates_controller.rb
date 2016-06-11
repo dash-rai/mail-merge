@@ -1,4 +1,5 @@
 class MailTemplatesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_mail_template, only: [:show, :edit, :update, :destroy]
 
   # GET /mail_templates
