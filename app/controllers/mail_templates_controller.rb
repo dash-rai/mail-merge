@@ -1,8 +1,8 @@
-require 'csv'
-
 class MailTemplatesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_mail_template, only: [:show, :edit, :update, :destroy]
+
+  include MailsFromTemplate
 
   # GET /mail_templates
   # GET /mail_templates.json
@@ -31,12 +31,7 @@ class MailTemplatesController < ApplicationController
     @mail_template.user = current_user
     substitution_file = params[:mail_template][:substitution_file]
 
-    CSV.parse(substitution_file.read, headers: :first_row) do |row|
-      ActionMailer::Base.mail(from: "placements@sparkpostbox.com",
-                              to: row['email'],
-                              subject: @mail_template.subject,
-                              body: @mail_template.body).deliver_later
-    end
+    build_and_send_mails(substitution_file)
 
     respond_to do |format|
       if @mail_template.save
