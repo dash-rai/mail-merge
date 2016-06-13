@@ -6,7 +6,7 @@ class MailTemplatesController < ApplicationController
 
   # GET /mail_templates
   def index
-    @mail_templates = current_user.mail_templates.all
+    @mail_templates = current_user.mail_templates.order(id: :desc)
   end
 
   # GET /mail_templates/1
