@@ -28,14 +28,16 @@ class MailTemplatesController < ApplicationController
     @mail_template.user = current_user
     substitution_file = params[:mail_template][:substitution_file]
 
-    begin
-      build_and_send_mails(substitution_file)
-    rescue => e
-      logger.error e
-      flash[:error] = "An error occured parsing and sending your mails."
-    end
-
     if @mail_template.save
+      begin
+        build_and_send_mails(substitution_file)
+      rescue => e
+        logger.error e
+        flash[:error] = "An error occured parsing and sending your mails."
+
+        render :new
+      end
+
       redirect_to @mail_template, notice: 'Mail template was successfully created.'
     else
       render :new
