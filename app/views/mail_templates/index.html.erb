@@ -7,8 +7,6 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:subject) %></th>
-      <th><%= model_class.human_attribute_name(:body) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -18,8 +16,6 @@
       <tr>
         <td><%= link_to mail_template.id, mail_template_path(mail_template) %></td>
         <td><%= mail_template.subject %></td>
-        <td><%= mail_template.body %></td>
-        <td><%= mail_template.user_id %></td>
         <td><%=l mail_template.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
