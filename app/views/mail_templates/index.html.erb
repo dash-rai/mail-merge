@@ -5,7 +5,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:subject) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -14,8 +13,7 @@
   <tbody>
     <% @mail_templates.each do |mail_template| %>
       <tr>
-        <td><%= link_to mail_template.id, mail_template_path(mail_template) %></td>
-        <td><%= mail_template.subject %></td>
+        <td><%= link_to mail_template.subject, mail_template_path(mail_template) %></td>
         <% if mail_template.created_at > 1.days.ago %>
             <td><span title="<%= mail_template.created_at %>"><%= time_ago_in_words(mail_template.created_at) %></span></td>
         <% else %>
