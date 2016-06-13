@@ -5,13 +5,11 @@ class MailTemplatesController < ApplicationController
   include MailsFromTemplate
 
   # GET /mail_templates
-  # GET /mail_templates.json
   def index
     @mail_templates = MailTemplate.all
   end
 
   # GET /mail_templates/1
-  # GET /mail_templates/1.json
   def show
   end
 
@@ -25,7 +23,6 @@ class MailTemplatesController < ApplicationController
   end
 
   # POST /mail_templates
-  # POST /mail_templates.json
   def create
     @mail_template = MailTemplate.new(mail_template_params)
     @mail_template.user = current_user
@@ -38,39 +35,26 @@ class MailTemplatesController < ApplicationController
       flash[:error] = "An error occured parsing and sending your mails."
     end
 
-    respond_to do |format|
-      if @mail_template.save
-        format.html { redirect_to @mail_template, notice: 'Mail template was successfully created.' }
-        format.json { render :show, status: :created, location: @mail_template }
-      else
-        format.html { render :new }
-        format.json { render json: @mail_template.errors, status: :unprocessable_entity }
-      end
+    if @mail_template.save
+      redirect_to @mail_template, notice: 'Mail template was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /mail_templates/1
-  # PATCH/PUT /mail_templates/1.json
   def update
-    respond_to do |format|
-      if @mail_template.update(mail_template_params)
-        format.html { redirect_to @mail_template, notice: 'Mail template was successfully updated.' }
-        format.json { render :show, status: :ok, location: @mail_template }
-      else
-        format.html { render :edit }
-        format.json { render json: @mail_template.errors, status: :unprocessable_entity }
-      end
+    if @mail_template.update(mail_template_params)
+      redirect_to @mail_template, notice: 'Mail template was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /mail_templates/1
-  # DELETE /mail_templates/1.json
   def destroy
     @mail_template.destroy
-    respond_to do |format|
-      format.html { redirect_to mail_templates_url, notice: 'Mail template was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to mail_templates_url, notice: 'Mail template was successfully destroyed.'
   end
 
   private
