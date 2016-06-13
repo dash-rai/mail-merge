@@ -79,4 +79,6 @@ Rails.application.configure do
 
   # Send emails via sparkpost
   config.action_mailer.delivery_method = :sparkpost
+
+  config.time_zone = 'Asia/Kolkata'
 end
