@@ -16,7 +16,11 @@
       <tr>
         <td><%= link_to mail_template.id, mail_template_path(mail_template) %></td>
         <td><%= mail_template.subject %></td>
-        <td><%=l mail_template.created_at %></td>
+        <% if mail_template.created_at > 1.days.ago %>
+            <td><span title="<%= mail_template.created_at %>"><%= time_ago_in_words(mail_template.created_at) %></span></td>
+        <% else %>
+            <td><%= time_tag mail_template.created_at %></td>
+        <% end %>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_mail_template_path(mail_template), :class => 'btn btn-default btn-xs' %>
