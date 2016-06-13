@@ -6,7 +6,7 @@ class MailTemplatesController < ApplicationController
 
   # GET /mail_templates
   def index
-    @mail_templates = MailTemplate.all
+    @mail_templates = current_user.mail_templates.all
   end
 
   # GET /mail_templates/1
@@ -62,7 +62,7 @@ class MailTemplatesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_mail_template
-      @mail_template = MailTemplate.find(params[:id])
+      @mail_template = current_user.mail_templates.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
