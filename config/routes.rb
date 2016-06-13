@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :mail_templates
-  root 'home#index'
+  root 'mail_templates#index'
 
   devise_for :users
 
