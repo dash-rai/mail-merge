@@ -38,8 +38,6 @@ gem 'twitter-bootstrap-rails', '~> 3.2', '>= 3.2.2'
 
 gem 'sparkpost_rails', '~> 1.4'
 
-gem 'liquid', '~> 3.0', '>= 3.0.6'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
