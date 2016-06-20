@@ -30,7 +30,7 @@ class MailTemplatesController < ApplicationController
 
     if @mail_template.save
       begin
-        build_and_send_mails(substitution_file)
+        build_and_send(substitution_file)
       rescue => e
         logger.error e
         flash[:error] = "An error occured parsing and sending your mails."
